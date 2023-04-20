@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountController!
+{% endblock %}
+
+{% block body %}
+	<h1>Création d'un compte</h1>
+	<a href="{{ path('account') }}" class="btn btn-primary">Retour à la liste des comptes</a>
+	{{ form_start(form) }}
+	{{ form_label(form.accountNumber, 'Numéro de compte') }}
+	{{form_widget(form.accountNumber)}}
+	{{ form_label(form.balance, 'Solde') }}
+	{{form_widget(form.balance)}}
+	{{ form_label(form.owner, 'Propriétaire') }}
+	{{form_widget(form.owner)}}
+	{{ form_widget(form) }}
+	<button type="submit" class="btn btn-primary">
+		Créer</button>
+	{{ form_end(form) }}
+
+{% endblock %}

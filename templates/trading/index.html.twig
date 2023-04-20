@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TradingController!
+{% endblock %}
+
+{% block body %}
+	{# Afficher la liste des transactions #}
+	<h1>Les transactions</h1>
+	{% for trading in tradings %}
+		<p>{{ trading.id}}</p>
+	{% endfor %}
+	<h1>Effectuer une transaction</h1>
+	<a href="{{ path('trading_new') }}">Create new transaction</a>
+{% endblock %}

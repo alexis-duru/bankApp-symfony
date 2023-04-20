@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ACCOUNT ID
+{% endblock %}
+
+{% block body %}
+	<h1>ACCOUNT ID</h1>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<th>Transactions</th>
+			</tr>
+			<tr>
+				<td>{{ account.id }}</td>
+				<td>
+					<ul>
+						{# {% for trading in account.tradings %}
+																																											<li>{{ trading.id }}
+																																												-
+																																												{{ trading.amount }}</li>
+																																										{% endfor %} #}
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}
