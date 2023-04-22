@@ -34,6 +34,11 @@ security:
   access_control:
     - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/logout, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/login, roles: PUBLIC_ACCESS }
+    # Rendre privé la route /account
+    - { path: ^/account, roles: IS_AUTHENTICATED_FULLY }
+    # Rendre privé la route /trading
+    - { path: ^/trading, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
   security:

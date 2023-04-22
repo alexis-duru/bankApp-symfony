@@ -16,8 +16,9 @@ class TradingController extends AbstractController
     public function index(): Response
     {
         $user = $this->getUser();
-
+        
         $tradings = $this->getDoctrine()->getRepository(Trading::class)->findAll();
+        var_dump($tradings);
 
         return $this->render('trading/index.html.twig', [
             'tradings' => $tradings,

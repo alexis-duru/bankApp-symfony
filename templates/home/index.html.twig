@@ -4,24 +4,24 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Accueil</h1>
-	<p>Bienvenue sur Bank'App</p>
-	{# Path pour accéder à la page register  #}
-	<a href="{{ path('register') }}">Inscription</a>
-	{# créer une condition afin que si l'utilisateur est déja connecté ca affiche "déja connecté" sinon "login #}
-	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-		<p>Vous êtes déjà connecté</p>
-	{% else %}
-		<a href="{{ path('login') }}">Connexion</a>
-	{% endif %}
+	<section id="home">
+		<h1>Accueil</h1>
+		<p>Bienvenue sur Bank'App</p>
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<p>Vous êtes connecté</p>
+		{% else %}
+			<a href="{{ path('login') }}">Connexion</a>
+			<a href="{{ path('register') }}">Inscription</a>
+		{% endif %}
 
-	{# Logout #}
-	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-		<a href="{{ path('logout') }}">Déconnexion</a>
-	{% endif %}
+		{# Logout #}
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<a href="{{ path('logout') }}">Déconnexion</a>
+		{% endif %}
 
-	{# Accéder à mon compte #}
-	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-		<a href="{{ path('account') }}">Mon compte</a>
-	{% endif %}
+		{# Accéder à mon compte #}
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<a href="{{ path('account') }}">Mon compte</a>
+		{% endif %}
+	</section>
 {% endblock %}

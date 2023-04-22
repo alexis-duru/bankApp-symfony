@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Register</h1>
+	<h1>S'enregistrer</h1>
 
 	{{ form_start(registrationForm) }}
 	{{ form_row(registrationForm.email) }}
@@ -13,4 +13,5 @@
         }) }}
 	<button type="submit" class="btn">Register</button>
 	{{ form_end(registrationForm) }}
+	<a href="{{ path('login') }}">Tu as déja un compte ? Connecte toi !</a>
 {% endblock %}
