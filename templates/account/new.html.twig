@@ -9,7 +9,10 @@
 	{{ form_start(form) }}
 	{{ form_label(form.accountNumber, 'Numéro de compte') }}
 	{{form_widget(form.accountNumber)}}
+	{# Ajouter un signe € derrière l'input #}
 	{{ form_label(form.balance, 'Solde') }}
+	<span class="input-group-addon">(€)</span>
+	{# {{ form_label(form.balance, 'Solde') }} #}
 	{{form_widget(form.balance)}}
 	{{ form_label(form.owner, 'Propriétaire') }}
 	{{form_widget(form.owner)}}

@@ -11,6 +11,12 @@
 	<a href="{{ path('profil') }}">Accéder à mon profil</a>
 	<a href="{{ path('home') }}">Retour à l'accueil</a>
 	<a href="{{ path('logout') }}">Déconnexion</a>
+	<a href="{{ path('trading') }}">Faire un virement</a>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 	{% for account in accounts %}
 		<table>
 			<thead>

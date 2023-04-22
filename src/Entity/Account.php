@@ -10,6 +10,7 @@ use App\Repository\AccountRepository;
 
 /**
  * @ORM\Entity(repositoryClass=AccountRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Account
 {
@@ -40,6 +41,21 @@ class Account
      * @ORM\OneToMany(targetEntity=Trading::class, mappedBy="sourceAccount")
      */
     private $tradings;
+
+      /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    // ...
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->created_at = new \DateTime();
+    }
 
     public function __toString()
     {
@@ -121,5 +137,13 @@ class Account
         }
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setAccountNumberValue()
+    {
+        $this->accountNumber = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
     }
 }

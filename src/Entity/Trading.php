@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=TradingRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Trading
 {
@@ -36,6 +37,11 @@ class Trading
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
+
+     /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -88,5 +94,28 @@ class Trading
         $this->description = $description;
 
         return $this;
+    }
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable('now');
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAt(): void
+    {
+        $this->createdAt = new \DateTimeImmutable('now');
+    }
+
+        public function getFormattedCreatedAt(): string
+    {
+        return $this->createdAt->format('d-m-Y');
     }
 }
