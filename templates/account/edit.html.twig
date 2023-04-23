@@ -9,9 +9,25 @@
 			<div class="col-md-12">
 				<h1>EDIT ACCOUNT</h1>
 				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Save</button>
-				{{ form_end(form) }}
+				<table>
+					<tr>
+						<td>{{ form_label(form.accountNumber) }}</td>
+						<td>{{ form_widget(form.accountNumber) }}</td>
+					</tr>
+					<tr>
+						<td>{{ form_label(form.balance) }}</td>
+						<td>{{ form_widget(form.balance) }}</td>
+					</tr>
+					<tr>
+						<td>{{ form_label(form.owner) }}</td>
+						<td>{{ form_widget(form.owner) }}</td>
+					</tr>
+				</table>
+				<div class="btn-container">
+					<button type="submit" class="btn btn-update">Save</button>
+					{{ form_end(form) }}
+					<a href="{{ path('account') }}" class="btn btn-show">Retour à l'accueil</a>
+				</div>
 			</div>
 		</div>
 	</div>

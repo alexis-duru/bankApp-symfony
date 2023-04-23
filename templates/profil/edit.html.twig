@@ -1,11 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!
+{% block title %}Modifier mon profil
 {% endblock %}
 
 {% block body %}
-	{{ form_start(form) }}
-	{{ form_widget(form) }}
-	<button type="submit" class="btn btn-primary">Modifier</button>
-	{{ form_end(form) }}
+	<div>
+		<h1>Modifier mon profil</h1>
+		<table>
+			<tbody>
+				{{ form_start(form) }}
+				<tr>
+					<th>{{ form_label(form.firstname) }}</th>
+					<td>{{ form_widget(form.firstname) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.lastname) }}</th>
+					<td>{{ form_widget(form.lastname) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.email) }}</th>
+					<td>{{ form_widget(form.email) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.address) }}</th>
+					<td>{{ form_widget(form.address) }}</td>
+				</tr>
+				<tr>
+					<th>{{ form_label(form.phone) }}</th>
+					<td>{{ form_widget(form.phone) }}</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="submit" class="btn btn-update">Modifier</button>
+					</td>
+				</tr>
+				{{ form_end(form) }}
+			</tbody>
+		</table>
+		<a href={{ path('account') }}>Retour</a>
+	</div>
 {% endblock %}

@@ -34,13 +34,13 @@
 					<td>{{ account.accountNumber }}</td>
 					<td>{{ account.balance }}€</td>
 					<td>{{ account.owner }}</td>
-					<td>
+					<td class="btn-show">
 						<a href="{{ path('show_account', {'id': account.id}) }}">Voir</a>
 					</td>
-					<td>
+					<td class="btn-update">
 						<a href="{{ path('edit_account', {'id': account.id}) }}">Modifier</a>
 					</td>
-					<td>
+					<td class="btn-delete">
 						<a href="{{ path('delete_account', {'id': account.id}) }}">Supprimer</a>
 					</td>
 				</tr>

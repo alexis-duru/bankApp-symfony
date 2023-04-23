@@ -1,27 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}Bank'App - Accueil
 {% endblock %}
 
 {% block body %}
 	<section id="home">
-		<h1>Accueil</h1>
-		<p>Bienvenue sur Bank'App</p>
-		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			<p>Vous êtes connecté</p>
-		{% else %}
-			<a href="{{ path('login') }}">Connexion</a>
-			<a href="{{ path('register') }}">Inscription</a>
-		{% endif %}
+		<div class="wrapper">
+			<h1>Accueil</h1>
+			<p>Bienvenue sur Bank'App</p>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<p>Vous êtes connecté</p>
+			{% else %}
+				<a href="{{ path('login') }}">Connexion</a>
+				<a href="{{ path('register') }}">Inscription</a>
+			{% endif %}
 
-		{# Logout #}
-		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			<a href="{{ path('logout') }}">Déconnexion</a>
-		{% endif %}
+			{# Accéder à mon compte #}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<a href="{{ path('account') }}">Mon compte</a>
+			{% endif %}
 
-		{# Accéder à mon compte #}
-		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			<a href="{{ path('account') }}">Mon compte</a>
-		{% endif %}
+			{# Logout #}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				<a href="{{ path('logout') }}">Déconnexion</a>
+			{% endif %}
+		</div>
 	</section>
 {% endblock %}

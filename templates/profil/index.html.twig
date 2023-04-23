@@ -1,45 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!
+{% block title %}Mon profil
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-
-	<div class="example-wrapper">
+	<div>
 		<h1>Mon profil</h1>
 		<h2>Les informations de mon profil</h2>
-		<ul>
-			<li>Prénom :
-				{{ app.user.firstname }}</li>
-			<li>Nom :
-				{{ app.user.lastname }}</li>
-			<li>Email :
-				{{ app.user.email }}
-			</li>
-			<li>Adresse :
-				{{ app.user.address }}
-			</li>
-			<li>Téléphone :
-				{{ app.user.phone }}
-			</li>
-		</ul>
+		<table>
+			<tbody>
+				<tr>
+					<th>Prénom</th>
+					<td>{{ app.user.firstname }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ app.user.lastname }}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ app.user.email }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ app.user.address }}</td>
+				</tr>
+				<tr>
+					<th>Téléphone</th>
+					<td>{{ app.user.phone }}</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Modifier mes informations - Supprimer mon profil</h3>
-		<div>
-			<a href="{{ path('profil_edit') }}">Modifier mes informations</a>
+		<div class="btn-container">
+			<a href="{{ path('profil_edit') }}" class="btn btn-update">Modifier mes informations</a>
 			{{ include('profil/delete.html.twig') }}
-			<a href="{{ path('account') }}">Mes comptes</a>
+			<a href="{{ path('account') }}" class="btn btn-show">Mes comptes</a>
 		</div>
 	</div>
 {% endblock %}

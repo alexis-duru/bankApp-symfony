@@ -6,19 +6,28 @@
 {% block body %}
 	<h1>Création d'un compte</h1>
 	<a href="{{ path('account') }}" class="btn btn-primary">Retour à la liste des comptes</a>
-	{{ form_start(form) }}
-	{{ form_label(form.accountNumber, 'Numéro de compte') }}
-	{{form_widget(form.accountNumber)}}
-	{# Ajouter un signe € derrière l'input #}
-	{{ form_label(form.balance, 'Solde') }}
-	<span class="input-group-addon">(€)</span>
-	{# {{ form_label(form.balance, 'Solde') }} #}
-	{{form_widget(form.balance)}}
-	{{ form_label(form.owner, 'Propriétaire') }}
-	{{form_widget(form.owner)}}
-	{{ form_widget(form) }}
-	<button type="submit" class="btn btn-primary">
-		Créer</button>
-	{{ form_end(form) }}
-
+	<table class="table">
+		{{ form_start(form) }}
+		<tr>
+			<th>{{ form_label(form.accountNumber, 'Numéro de compte') }}</th>
+			<td>{{ form_widget(form.accountNumber) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.balance, 'Solde') }}</th>
+			<td>{{ form_widget(form.balance) }}<span class="input-group-addon">(€)</span>
+			</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.owner, 'Propriétaire') }}</th>
+			<td>{{ form_widget(form.owner) }}</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="btn-container">
+					<button type="submit" class="btn btn-update">Créer</button>
+					<a href="{{ path('account') }}" class="btn btn-show">Retour à l'accueil</a>
+				</div>
+				{{ form_end(form) }}</td>
+		</tr>
+	</table>
 {% endblock %}
