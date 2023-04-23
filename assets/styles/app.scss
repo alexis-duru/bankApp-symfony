@@ -8,6 +8,7 @@ body {
     padding: 0;
     height: auto;
     width: 100%;
+    
 }
 
 #home {
@@ -128,7 +129,7 @@ table tbody tr:nth-child(even) {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 }
 
@@ -137,7 +138,7 @@ table tbody tr:nth-child(even) {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
 }
 
 .form-login input {
@@ -163,5 +164,14 @@ table tbody tr:nth-child(even) {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.wrapper {
+    background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 

@@ -17,9 +17,8 @@ class AccountController extends AbstractController
      */
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser(); // récupérer l'utilisateur connecté
+        $user = $this->getUser();
 
-        // Récupérer les comptes créés par l'utilisateur connecté
         $accounts = $entityManager->getRepository(Account::class)->findBy(['owner' => $user]);
 
         return $this->render('account/index.html.twig', [
@@ -46,7 +45,6 @@ class AccountController extends AbstractController
 
             $entityManager->persist($account);
             $entityManager->flush();
-            // Redirect sur /account
             return $this->redirectToRoute('account');
         }
 
@@ -64,7 +62,6 @@ class AccountController extends AbstractController
      */
     public function showAccount(Account $account): Response
     {
-        // Afficher la liste des transactions créés par l'utilisateur connecté et liés au compte
         return $this->render('account/show.html.twig', [
             'account' => $account,
         ]);
@@ -84,7 +81,6 @@ class AccountController extends AbstractController
 
             $entityManager->persist($account);
             $entityManager->flush();
-            // Redirect sur /account
             return $this->redirectToRoute('account');
         }
 

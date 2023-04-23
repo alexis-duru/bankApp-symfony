@@ -47,6 +47,11 @@ class Account
      */
     private $created_at;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Recharge::class, mappedBy="account")
+     */
+    private $recharges;
+
     // ...
 
     /**
@@ -66,6 +71,7 @@ class Account
     public function __construct()
     {
         $this->tradings = new ArrayCollection();
+        $this->recharges = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,4 +152,40 @@ class Account
     {
         $this->accountNumber = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
     }
+
+    /**
+     * @return Collection<int, Recharge>
+     */
+    public function getRecharges(): Collection
+    {
+        return $this->recharges;
+    }
+
+    public function addRecharge(Recharge $recharge): self
+    {
+        if (!$this->recharges->contains($recharge)) {
+            $this->recharges[] = $recharge;
+            $recharge->setAccount($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecharge(Recharge $recharge): self
+    {
+        if ($this->recharges->removeElement($recharge)) {
+            // set the owning side to null (unless already changed)
+            if ($recharge->getAccount() === $this) {
+                $recharge->setAccount(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function updateBalance(float $amount)
+    {
+        $this->balance += $amount;
+    }
+
 }
