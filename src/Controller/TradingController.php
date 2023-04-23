@@ -17,22 +17,7 @@ class TradingController extends AbstractController
     /**
      * @Route("/trading", name="trading")
      */
-    public function index(): Response
-    {
-        $user = $this->getUser();
         
-        $tradings = $this->getDoctrine()->getRepository(Trading::class)->findAll();
-
-        return $this->render('trading/index.html.twig', [
-            'tradings' => $tradings,
-            'controller_name' => 'TradingController',
-        ]);
-
-    }
-
-        /**
-         * @Route("/trading/new", name="trading_new")
-         */
         public function new(Request $request, EntityManagerInterface $em, FlashBagInterface $flashBag): Response
         {
             $trading = new Trading();
@@ -57,10 +42,13 @@ class TradingController extends AbstractController
                 return $this->redirectToRoute('account');
             }
 
-            return $this->render('trading/new.html.twig', [
+            return $this->render('trading/index.html.twig', [
                 'form' => $form->createView(),
             ]);
         }
+
     }
-    
+
+       
+
 

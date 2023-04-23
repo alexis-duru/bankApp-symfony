@@ -4,25 +4,40 @@
 {% endblock %}
 
 {% block body %}
-	<h1>ACCOUNT ID</h1>
+	<h1>Numéro de compte -
+		{{account.accountNumber }}
+	</h1>
+	<h2>Solde du compte :
+		{{ account.balance }}
+		€</h2>
 	<table class="table">
 		<tbody>
 			<tr>
-				<th>Id</th>
-				<th>Transactions</th>
-			</tr>
-			<tr>
-				<td>{{ account.id }}</td>
 				<td>
-					<ul>
-						{# {% for trading in account.tradings %}
-																																											<li>{{ trading.id }}
-																																												-
-																																												{{ trading.amount }}</li>
-																																										{% endfor %} #}
-					</ul>
+					<table>
+						<thead>
+							<tr>
+								<th>Numéro de transaction</th>
+								<th>Montant</th>
+								<th>Description</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for trading in account.tradings %}
+								<tr>
+									<td>{{ trading.id }}</td>
+									<td>{{ trading.amount }}
+										€</td>
+									<td>{{ trading.description }}</td>
+									<td>{{ trading.createdAt|date('d/m/Y H:i:s') }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	<a href="{{ path('account') }}" class="btn btn-primary">Retour à l'accueil</a>
 {% endblock %}

@@ -4,23 +4,33 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Les transactions</h1>
-	{% for trading in tradings %}
-		<p>Identifiant du virement :
-			{{ trading.id}}</p>
-		<p>Date du virement :
-			{{ trading.getFormattedCreatedAt() }}</p>
-		<p>Montant du virement :
-			{{ trading.amount }}
-			€</p>
-		<p>Compte débité :
-			{{ trading.sourceAccount }}</p>
-		<p>Compte crédité :
-			{{ trading.destinationAccount }}</p>
-		<p>Libellé du virement :
-			{{ trading.description }}</p>
+	<h1>Faire un virement</h1>
 
-	{% endfor %}
-	<h1>Effectuer une transaction</h1>
-	<a href="{{ path('trading_new') }}">Faire un virement</a>
+	{% if form_errors(form) %}
+		<div class="alert alert-danger">
+			{{ form_errors(form) }}
+		</div>
+	{% endif %}
+
+	{{ form_start(form) }}
+	<table>
+		<tr>
+			<th>{{ form_label(form.amount) }}</th>
+			<td>{{ form_widget(form.amount) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.sourceAccount) }}</th>
+			<td>{{ form_widget(form.sourceAccount) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.destinationAccount) }}</th>
+			<td>{{ form_widget(form.destinationAccount) }}</td>
+		</tr>
+		<tr>
+			<th>{{ form_label(form.description) }}</th>
+			<td>{{ form_widget(form.description) }}</td>
+		</tr>
+	</table>
+	{{ form_end(form) }}
+	<a href="{{ path('account') }}" class="btn btn-primary">Retour à l'accueil</a>
 {% endblock %}
