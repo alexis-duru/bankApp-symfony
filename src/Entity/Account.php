@@ -3,10 +3,11 @@
 namespace App\Entity;
 
 use App\Entity\User;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Recharge;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AccountRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=AccountRepository::class)
@@ -183,7 +184,7 @@ class Account
         return $this;
     }
 
-    public function updateBalance(float $amount)
+    public function updateBalance(float $amount): void
     {
         $this->balance += $amount;
     }
